@@ -1,0 +1,18 @@
+<div class="card" *ngIf="(!playersChoice || choice.description !== playersChoice.description) && !isResult" (click)="selectChoice()">
+  <img [src]="choice.photo" style="width: 100px; height: 100px;">
+  <div class="container">
+    <h4><b>{{choice.description}}</b></h4> 
+  </div>
+</div>
+<div class="card selected" *ngIf="playersChoice && choice.description === playersChoice.description && !isResult" (click)="selectChoice()">
+  <img [src]="choice.photo" style="width: 100px; height: 100px;">
+  <div class="container">
+    <h4><b>{{choice.description}}</b></h4> 
+  </div>
+</div>
+<div class="game-result" *ngIf="isResult">
+  <img [src]="choice.photo" style="width: 100px; height: 100px;">
+  <div class="container">
+    <h4><b>{{choice.description}}</b></h4> 
+  </div>
+</div>

@@ -1,7 +1,47 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div class="main-page">
   <h1>
-    Welcome to {{title}}!
+    {{title}}
   </h1>
+  <div class="scorecard">
+    <span style="font-size: 18px; font-weight: bold;">Score</span>
+    <mat-grid-list cols="2" rowHeight="5vh">
+      <mat-grid-tile [style.background]="'lightblue'">Player: {{score.player}}</mat-grid-tile>
+      <mat-grid-tile [style.background]="'lightgray'">Computer: {{score.computer}}</mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <h3>Select Your Move</h3>
+  <div class="choices">
+    <div *ngFor="let c of choices">
+      <choice-component [choice]="c" [playersChoice]="playersChoice" [isResult]="false" (selectedChoice)="setPlayersChoice($event)"></choice-component>
+    </div>
+  </div>
+  <div class="play-button">
+    <button class="play" *ngIf="!playersChoice" (click)="playGame()">
+      <span style="font-size: 30px; font-weight: bold;">Play</span>
+      <img src="../assets/Play-50.png" width="100%">
+    </button>
+    <button class="play enabled" *ngIf="playersChoice" (click)="playGame()">
+      <span style="font-size: 30px; font-weight: bold;">Play</span>
+      <img src="../assets/Play-50.png" width="100%">
+    </button>
+  </div>
+  <h3 *ngIf="resultJSON">Result</h3>
+  <div class="result" *ngIf="resultJSON">
+    <div class="players-result">
+      <span>Player's Choice</span>
+      <choice-component [choice]="playersChoice" [playersChoice]="playersChoice" [isResult]="true"></choice-component>
+    </div>
+    <div class="computers-result" *ngIf="computersChoice">
+      <span>Computer's Choice</span>
+      <choice-component [choice]="computersChoice" [playersChoice]="playersChoice" [isResult]="true"></choice-component>
+    </div>
+  </div>
+  <div class="winner" *ngIf="resultJSON">
+    {{displayResult(result)}}
+  </div>
+  <div class="play-again-button" *ngIf="resultJSON">
+    <button class="play" (click)="playAgain()">
+      <span style="font-size: 24px; font-weight: bold;">Play Again</span>
+    </button>
+  </div>
 </div>
-<!-- Build out your angular code here! -->
