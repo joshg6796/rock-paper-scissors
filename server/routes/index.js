@@ -20,9 +20,9 @@ router.post("/match", function(req, res, next){
     }
 
     // Send 500 ISE randomly 1 out of 10 times
-    if (_.random(1,10) === 1) {
-      return res.status(500).json({message: "Internal Server Error"})
-    }
+    // if (_.random(1,10) === 1) {
+    //   return res.status(500).json({message: "Internal Server Error"})
+    // }
 
     var computerChoice = _.sample(['rock', 'paper', 'scissors']);
     var result = playGame(playerChoice, computerChoice);
