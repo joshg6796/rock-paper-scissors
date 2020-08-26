@@ -17,15 +17,15 @@ export class AppComponent {
   [
     {
       description : 'Rock',
-      photo: '../assets/Rock-50.png',
+      photo: '../assets/rock.png',
     },
     {
       description : 'Paper',
-      photo: '../assets/Paper-50.png',
+      photo: '../assets/paper.png',
     },
     {
       description : 'Scissors',
-      photo: '../assets/Scissors-50.png',
+      photo: '../assets/scissors.png',
     }
   ];
 
